@@ -1,3 +1,4 @@
+# Publishes the static study site from the dist directory.
 name: Deploy GitHub Pages
 
 on:
