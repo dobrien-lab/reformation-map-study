@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#15283b" />
+    <meta name="description" content="An interactive atlas for the religious geography of Europe around 1560 and the Counter-Reformation." />
+    <title>Europe After the Reformation</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2315283b'/%3E%3Cpath d='M15 17h34v30H15z' fill='%23efe6cf'/%3E%3Cpath d='M20 23h24M20 30h24M20 37h16' stroke='%2315283b' stroke-width='3'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#trainer">Skip to the atlas</a>
+
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">WORLD HISTORY · PROFICIENCY 5</p>
+        <h1>Europe after the Reformation</h1>
+        <p class="lede">A map study of religious geography around 1560</p>
+      </div>
+      <div class="date-block" aria-label="Date: around 1560"><span>c.</span> 1560</div>
+    </header>
+
+    <main>
+      <section id="trainer" class="trainer" aria-labelledby="trainer-title">
+        <div class="trainer-heading">
+          <div>
+            <p class="section-kicker">INTERACTIVE HISTORICAL ATLAS</p>
+            <h2 id="trainer-title">Read the map. Then test yourself.</h2>
+          </div>
+          <div class="mode-switch" role="group" aria-label="Atlas mode">
+            <button class="mode-button is-active" data-mode="study" type="button">Study map</button>
+            <button class="mode-button" data-mode="practice" type="button">Practice</button>
+          </div>
+        </div>
+
+        <div class="trainer-grid">
+          <div class="atlas-column">
+            <div class="atlas-toolbar" aria-label="Map controls">
+              <div class="toolbar-group">
+                <button id="zoom-out" class="tool-button" type="button" aria-label="Zoom out">−</button>
+                <span id="zoom-status" class="zoom-status" aria-live="polite">100%</span>
+                <button id="zoom-in" class="tool-button" type="button" aria-label="Zoom in">+</button>
+                <button id="zoom-fit" class="tool-button tool-button--wide" type="button">Fit map</button>
+              </div>
+              <button id="toggle-overlay" class="tool-button tool-button--wide is-on" type="button" aria-pressed="true">Color overlay: on</button>
+            </div>
+
+            <p id="map-instructions" class="map-instructions">Select a numbered marker or a region name. Zoom in to read the original atlas labels; drag the map to move it.</p>
+
+            <div id="atlas-viewport" class="atlas-viewport">
+              <div id="atlas-canvas" class="atlas-canvas">
+                <img
+                  src="assets/europe-1560.jpg"
+                  width="2308"
+                  height="1855"
+                  alt="Historical atlas map of Europe about 1560, showing kingdoms, states, cities, and political boundaries"
+                  draggable="false"
+                />
+                <svg id="religion-overlay" class="religion-overlay" viewBox="0 0 2308 1855" aria-hidden="true" preserveAspectRatio="none">
+                  <polygon class="zone catholic" points="54,1005 690,1005 720,1438 42,1440" />
+                  <polygon class="zone catholic" points="346,360 505,355 528,615 353,620" />
+                  <polygon class="zone anglican" points="493,330 694,335 717,678 507,690" />
+                  <polygon class="zone reformed" points="390,105 615,100 619,350 418,380" />
+                  <polygon class="zone catholic" points="450,640 875,635 930,1030 470,1055" />
+                  <polygon class="zone reformed" points="704,515 850,510 853,670 715,679" />
+                  <polygon class="zone mixed" points="738,820 930,810 935,963 754,976" />
+                  <polygon class="zone catholic" points="880,890 1265,865 1342,1370 911,1390" />
+                  <polygon class="zone lutheran" points="770,35 1425,25 1450,520 800,525" />
+                  <polygon class="zone lutheran" points="810,495 1282,475 1300,744 824,760" />
+                  <polygon class="zone catholic" points="825,710 1320,690 1336,937 846,950" />
+                  <polygon class="zone catholic" points="1045,750 1470,720 1515,966 1070,982" />
+                  <polygon class="zone catholic" points="1260,360 1845,335 1885,874 1278,890" />
+                  <polygon class="zone orthodox" points="1660,260 2280,240 2290,990 1690,1005" />
+                  <polygon class="zone islam" points="1280,900 2275,865 2280,1500 1320,1495" />
+                </svg>
+                <div id="map-markers" class="map-markers" aria-label="Clickable map regions"></div>
+              </div>
+            </div>
+
+            <div class="legend" aria-label="Religious tradition filters">
+              <button data-filter="catholic" type="button"><i class="swatch catholic"></i>Roman Catholic</button>
+              <button data-filter="lutheran" type="button"><i class="swatch lutheran"></i>Lutheran</button>
+              <button data-filter="anglican" type="button"><i class="swatch anglican"></i>Anglican</button>
+              <button data-filter="reformed" type="button"><i class="swatch reformed"></i>Calvinist / Reformed</button>
+              <button data-filter="orthodox" type="button"><i class="swatch orthodox"></i>Eastern Orthodox</button>
+              <button data-filter="islam" type="button"><i class="swatch islam"></i>Islam / Ottoman rule</button>
+              <button data-filter="mixed" type="button"><i class="swatch mixed"></i>Mixed / patchwork</button>
+            </div>
+
+            <p class="map-note">Political boundaries come from a public-domain 1923 historical atlas. The transparent religious colors are broad learning patterns, not a claim that every person in a region shared one faith.</p>
+          </div>
+
+          <aside class="side-panel">
+            <div id="study-panel">
+              <p class="panel-label">REGION GUIDE</p>
+              <div id="region-detail" class="region-detail" aria-live="polite">
+                <h3>Select a region</h3>
+                <p>Use a numbered marker on the map or the list below. The selected location will be centered and explained here.</p>
+              </div>
+              <div id="region-index" class="region-index" aria-label="Region index"></div>
+            </div>
+
+            <div id="practice-panel" hidden aria-live="polite">
+              <p class="panel-label">MAP PRACTICE · <span id="question-count">1 / 10</span></p>
+              <h3 id="practice-prompt">Find England.</h3>
+              <p id="practice-feedback" class="practice-feedback">Choose a numbered marker on the map.</p>
+              <div class="score-row"><span>Score</span><strong id="map-score">0 / 0</strong></div>
+              <div class="practice-actions">
+                <button id="show-answer" class="secondary-button" type="button">Show answer</button>
+                <button id="next-question" class="primary-button" type="button" disabled>Next</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="patterns" aria-labelledby="patterns-title">
+        <div class="section-heading">
+          <p class="section-kicker">PATTERNS TO REMEMBER</p>
+          <h2 id="patterns-title">A divided continent</h2>
+        </div>
+        <div class="pattern-grid">
+          <article><span>NORTH</span><h3>Mostly Protestant</h3><p>Lutheranism became strong in Scandinavia and many northern German states.</p></article>
+          <article><span>SOUTH</span><h3>Mostly Catholic</h3><p>Spain, Portugal, the Italian states, and Austria remained Roman Catholic.</p></article>
+          <article><span>CENTER</span><h3>A patchwork</h3><p>The German states and Swiss Confederation mixed Catholic, Lutheran, and Reformed areas.</p></article>
+          <article><span>BORDERS</span><h3>Conflict zones</h3><p>France and the Netherlands show why mixed regions often experienced intense conflict.</p></article>
+        </div>
+      </section>
+
+      <section class="challenge" aria-labelledby="challenge-title">
+        <div class="challenge-intro">
+          <p class="section-kicker">THE CATHOLIC RESPONSE</p>
+          <h2 id="challenge-title">Counter-Reformation check</h2>
+          <p>Connect the religious map to the Catholic Church’s efforts to reform itself and respond to Protestant growth.</p>
+          <div class="progress-track" aria-hidden="true"><span id="challenge-progress"></span></div>
+          <p>Best score: <strong id="best-score">0 / 5</strong></p>
+        </div>
+        <div class="challenge-card" aria-live="polite">
+          <p class="panel-label">QUICK CHECK</p>
+          <h3 id="challenge-question">Ready to test the Counter-Reformation?</h3>
+          <div id="challenge-options" class="option-list"></div>
+          <p id="challenge-feedback" class="challenge-feedback"></p>
+          <button id="challenge-start" class="primary-button" type="button">Start challenge</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Europe after the Reformation</strong> · Classroom study tool</p>
+      <p class="source-credit">Base map: William R. Shepherd, <a href="https://commons.wikimedia.org/wiki/File:Europe_in_1560.jpg" target="_blank" rel="noreferrer">Europe about 1560</a> (1923), public domain.</p>
+      <button id="clear-progress" class="text-button" type="button">Clear saved score</button>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
